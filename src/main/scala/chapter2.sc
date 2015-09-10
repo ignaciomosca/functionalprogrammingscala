@@ -4,6 +4,11 @@ val list = List(1,2,3,4,5,6,7,8,9)
 
 def sum(t: List[Int]) = t.foldRight(0)(_+_)
 
+/**
+ * Exercise 1
+ * What will the result of the following match expression be?
+ * (15)
+ * */
 val x = List(1,2,3,4,5) match {
   case x::2::4::Nil => x
   case Nil => 42
@@ -14,18 +19,22 @@ val x = List(1,2,3,4,5) match {
 x
 
 /**
+ * Exercise 2
  * Implement the function tail for "removing" the first element
-of a List
+ * of a List
  * */
 def tail2[A](as:List[A]) = if(as.isEmpty) Nil else as.drop(1)
 /**
+ * Exercise 3
  * Generalize tail to the function drop , which removes the first
-n elements from a list.
+ * n elements from a list.
  * */
 def drop2[A](as:List[A], n:Int):List[A] = if(n==0) as else drop2(as.tail,n-1)
+
 /**
+ * Exercise 4
  * Implement dropWhile , 10 which removes elements from the
-List prefix as long as they match a predicate.
+ * List prefix as long as they match a predicate.
  * */
 def dropWhile[A](l: List[A])(f: A => Boolean): List[A] = l match {
   case Nil => l
@@ -34,8 +43,9 @@ def dropWhile[A](l: List[A])(f: A => Boolean): List[A] = l match {
 }
 
 /**
+ * Exercise 5
  * implement the function setHead for
-replacing the first element of a List with a different value.
+ * replacing the first element of a List with a different value.
  * */
 def setHead2[A](l:List[A], newHead:A)= l match {
   case head::tail => newHead::tail
@@ -44,9 +54,10 @@ def setHead2[A](l:List[A], newHead:A)= l match {
 setHead2(list,800)
 
 /**
+ * Exercise 6
  * Implement a function,
-init , which returns a List consisting of all but the last element of a List . So,
-given List(1,2,3,4) , init will return List(1,2,3)
+ * init , which returns a List consisting of all but the last element of a List . So,
+ * given List(1,2,3,4) , init will return List(1,2,3)
  * */
 def init2[A](l:List[A]):List[A] = l match {
   case Nil => l
@@ -56,25 +67,42 @@ def init2[A](l:List[A]):List[A] = l match {
 init2(List(1,2,3,4))
 
 /**
+ * Exercise 7 1.a
  * sum implemented with foldRight
  * */
 def sumInts(ints: List[Int]): Int = ints.foldRight(0)(_+_)
 
 /**
+ * Exercise 7 1.b
  * product implemented with foldRight
  * */
 def productInts(ints: List[Int]): Int = ints.foldRight(1)(_*_)
 
 /**
+ * Exercise 9
  * length of a list with foldLeft
  * */
 def length2[A](l:List[A]):Int = l.foldLeft(0)((acc,elem)=>1+acc)
 length2(List(1,2,3,4,5,6,7,8))
 
 
+/**
+ * Exercise 18
+ * Write a function map , that generalizes modifying each element
+ * in a list while maintaining the structure of the list
+ * */
+def map2[A,B](l: List[A])(f: A => B): List[B] = l match {
+  case head::tail => f(head)::map2(tail)(f)
+  case _ => Nil
+}
+map2(List(1,2,3,4,5,6))(x=>x*2)
 
 
-
+/**
+ * Exercise 19
+ * Write a function filter that removes elements from a list
+ * unless they satisfy a given predicate
+ * */
 def filter2[A](l:List[A],pred:A=>Boolean):List[A]= l match {
   case Nil => l
   case h::t if pred(h) => filter2(t,pred)
