@@ -38,3 +38,23 @@ def map[A, B](t: Tree[A])(f: A => B): Tree[B] = t match {
   case Leaf(value) => Leaf(f(value))
   case Branch(left,right) => Branch(map(left)(f),map(right)(f))
 }
+
+/**
+ * Exercise 29
+ * Generalize size , maximum , depth , and map , writing a new
+ * function fold that abstracts
+ * over their similarities. Reimplement them in terms of this
+ * more general function
+ * */
+def fold2[A,B](t:Tree[A])(f: A => B)(g: (B, B) => B): B = t match {
+  case Leaf(v) => f(v)
+  case Branch(left,right) => g(fold2(left)(f)(g),fold2(right)(f)(g))
+}
+
+def foldSize[A,B](t:Tree[A]):Int = fold2(t)(v=>1)((left,right)=>1 + left + right)
+
+def foldMax[A](t: Tree[Int]): Int = fold2(t)(v=>v)((left,right)=> left max right)
+
+def foldDepth[A](t:Tree[A]):Int = fold2(t)(v=>0)((left,right)=>1+(left max right))
+
+def foldMap[A,B](t:Tree[A])(f:A=>B):Tree[B] = fold2(t)(v=>Leaf(f(v)):Tree[B])((left,right)=>Branch(left,right))
