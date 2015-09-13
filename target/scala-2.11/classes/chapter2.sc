@@ -119,7 +119,7 @@ def reverse2[A](l:List[A]):List[A]= l match{
   case h::t => reverse2(t):::List(h)
   case Nil => Nil
 }
-reverse2(List(1,2,3,4))
+
 
 /**
  * Exercise 18
