@@ -122,6 +122,22 @@ def reverse2[A](l:List[A]):List[A]= l match{
 
 
 /**
+ * Exercise 16
+ * Write a function that transforms a list of integers by adding 1 to each element.
+ * */
+def plusOne(l:List[Int]):List[Int]=l.map(x=>x+1)
+plusOne(List(1,2,3,4,5,6,7,8,9))
+
+/**
+ * Exercise 17
+ * Write a function that turns each value in a List[Double] into a String . You can use
+ * the expression d.toString to convert some d: Double to a String .
+ * */
+def listDoubleToString(l:List[Double]):List[String]= l.map((d:Double)=>d.toString());
+
+listDoubleToString(List(1.0,2.0,3.0,4.0,5.0,6.0,7.0))
+
+/**
  * Exercise 18
  * Write a function map , that generalizes modifying each element
  * in a list while maintaining the structure of the list
@@ -131,6 +147,7 @@ def map2[A, B](l: List[A])(f: A => B): List[B] = l match {
   case _ => Nil
 }
 map2(List(1, 2, 3, 4, 5, 6))(x => x * 2)
+
 
 
 /**
@@ -144,6 +161,5 @@ def filter2[A](l: List[A], pred: A => Boolean): List[A] = l match {
   case h :: t if !pred(h) => h :: filter2(t, pred)
 }
 filter2(list, (a: Int) => a % 2 == 0)
-
 
 
