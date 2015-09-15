@@ -29,3 +29,18 @@ def tupleThreshold(l:List[Int], threshold:Int):List[(Int,Int)]={
   } yield (x,y)
 }
 tupleThreshold(List(0,1,2,3),3).foreach(println)
+
+/**
+ * Design an algorithm to find all the common elements in two sorted lists of numbers
+ * Input l1: 2,5,5,5 l2: 2,2,3,5,5,7
+ * Output: 2,5,5
+ * */
+def commonElementsInList(l1:List[Int], l2:List[Int]):List[Int]={
+  for{
+    e1 <- l1
+    if(l2.contains(e1))
+  } yield e1
+}
+commonElementsInList(List(2,5,5,5),List(2,2,3,5,5,7)).foreach(println)
+
+
