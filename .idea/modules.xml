@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/functionalprogramminginscala.iml" filepath="$PROJECT_DIR$/.idea/modules/functionalprogramminginscala.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/functionalprogramminginscala-build.iml" filepath="$PROJECT_DIR$/.idea/modules/functionalprogramminginscala-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/functionalprogrammingscala.iml" filepath="$PROJECT_DIR$/.idea/modules/functionalprogrammingscala.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/functionalprogrammingscala-build.iml" filepath="$PROJECT_DIR$/.idea/modules/functionalprogrammingscala-build.iml" />
     </modules>
   </component>
 </project>
